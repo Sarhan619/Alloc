@@ -1,0 +1,445 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties */
+:root {
+  --space: #06080F;
+  --teal: #38E8D7;
+  --violet: #8A7CFF;
+  --electric-blue: #4FB7FF;
+  --subtle-gray: #A7B0D6;
+  --glass-white: #EAF0FF;
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--space);
+  color: var(--glass-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Font classes */
+.font-alkatra {
+  font-family: 'Alkatra', 'Inter', sans-serif;
+}
+
+/* Color utilities */
+.bg-space { background-color: var(--space); }
+.text-teal { color: var(--teal); }
+.text-violet { color: var(--violet); }
+.text-electric-blue { color: var(--electric-blue); }
+.text-subtle-gray { color: var(--subtle-gray); }
+.text-glass-white { color: var(--glass-white); }
+
+/* Scroll snap sections */
+section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Glass morphism effects */
+.glass-card {
+  background: rgba(234, 240, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(234, 240, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-button {
+  background: rgba(234, 240, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(234, 240, 255, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Button styles */
+.primary-button {
+  @apply inline-flex items-center px-8 py-4 rounded-full font-medium transition-all duration-300;
+  background: linear-gradient(135deg, rgba(56, 232, 215, 0.2) 0%, rgba(138, 124, 255, 0.2) 100%);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  border-image: linear-gradient(135deg, var(--teal), var(--violet)) 1;
+  color: var(--glass-white);
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--teal), var(--violet));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.primary-button:hover::before {
+  opacity: 0.1;
+}
+
+.primary-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(56, 232, 215, 0.3);
+}
+
+.primary-button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.secondary-button {
+  @apply inline-flex items-center px-6 py-3 rounded-full font-medium transition-all duration-300;
+  background: rgba(234, 240, 255, 0.08);
+  border: 1px solid rgba(234, 240, 255, 0.2);
+  color: var(--glass-white);
+}
+
+.secondary-button:hover {
+  background: rgba(234, 240, 255, 0.15);
+  transform: scale(1.03);
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.secondary-button:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+/* Navigation styles */
+.nav-link {
+  color: var(--subtle-gray);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--teal);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background: linear-gradient(90deg, var(--teal), var(--electric-blue));
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Hover effects */
+.hover-glow:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(56, 232, 215, 0.15);
+  border-color: var(--teal);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.05);
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(56, 232, 215, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(56, 232, 215, 0.6);
+  }
+}
+
+@keyframes particle-float {
+  0% { 
+    transform: translateY(100vh) translateX(0px);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(-100px) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Intersection Observer Animation Classes */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-in-left {
+  transform: translateX(-50px);
+}
+
+.slide-in-left.animate-in {
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  transform: translateX(50px);
+}
+
+.slide-in-right.animate-in {
+  transform: translateX(0);
+}
+
+/* Animated orbs */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(56, 232, 215, 0.3) 0%, transparent 70%);
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(138, 124, 255, 0.2) 0%, transparent 70%);
+  top: 60%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.orb-3 {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(79, 183, 255, 0.25) 0%, transparent 70%);
+  bottom: 30%;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+/* Particle field */
+.particle-field {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--teal);
+  border-radius: 50%;
+  animation: particle-float linear infinite;
+  opacity: 0.7;
+}
+
+.particle:nth-child(odd) {
+  background: var(--electric-blue);
+}
+
+.particle:nth-child(3n) {
+  background: var(--violet);
+  width: 1px;
+  height: 1px;
+}
+
+/* Grid pattern */
+.grid-pattern {
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(56, 232, 215, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 232, 215, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(50px, 50px); }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .glass-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .particle {
+    display: none; /* Reduce particles on mobile for performance */
+  }
+  
+  .orb {
+    filter: blur(20px); /* Reduce blur on mobile */
+  }
+  
+  html {
+    scroll-snap-type: none; /* Disable scroll snap on mobile */
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .particle,
+  .orb {
+    animation: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .glass-card {
+    border-color: var(--glass-white);
+    background: rgba(6, 8, 15, 0.9);
+  }
+  
+  .nav-link {
+    color: var(--glass-white);
+  }
+}
+
+/* Focus improvements for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Loading states */
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Form styles */
+input[type="text"],
+input[type="email"],
+textarea {
+  appearance: none;
+  background-clip: padding-box;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(56, 232, 215, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--space);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--teal);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--electric-blue);
+}
+
+/* Selection styles */
+::selection {
+  background: rgba(56, 232, 215, 0.3);
+  color: var(--glass-white);
+}
+
+::-moz-selection {
+  background: rgba(56, 232, 215, 0.3);
+  color: var(--glass-white);
+}
