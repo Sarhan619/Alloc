@@ -95,7 +95,6 @@ const Services = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-on-scroll">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-alkatra font-bold mb-6">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal to-violet">Services</span>
           </h2>
           <p className="text-lg text-subtle-gray max-w-3xl mx-auto">
             Comprehensive solutions spanning the entire technology ecosystem

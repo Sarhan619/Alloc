@@ -46,8 +46,6 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16 animate-on-scroll">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-alkatra font-bold mb-6">
-            Let's build the <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal to-violet">future</span> together
           </h2>
         </div>
 
