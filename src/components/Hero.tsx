@@ -30,7 +30,7 @@ const Hero = () => {
           {/* Main headline */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-alkatra font-bold mb-6 leading-tight">
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal via-electric-blue to-violet">
-              Hardware, Powered by
+             Where Software Meets Hardware, Powered by
             </span>
             <span className="block">Intelligence.</span>
           </h1>
